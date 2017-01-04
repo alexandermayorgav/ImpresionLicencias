@@ -9,3 +9,6 @@ c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\Impres
 c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.csproj.GenerateResource.Cache
 c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.exe
 c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.pdb
+C:\Users\DavidAlexander\Documents\GitHub\ImpresionLicencias\bin\Debug\ImpresionLicencias.exe.config
+C:\Users\DavidAlexander\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.exe
+C:\Users\DavidAlexander\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.pdb
