@@ -1,0 +1,11 @@
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\bin\Debug\ImpresionLicencias.exe.config
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\bin\Debug\CP500Extensions.dll
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\bin\Debug\msvcr100d.dll
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\bin\Debug\ImpresionLicencias.exe
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\bin\Debug\ImpresionLicencias.pdb
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.csprojResolveAssemblyReference.cache
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.Form1.resources
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.Properties.Resources.resources
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.csproj.GenerateResource.Cache
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.exe
+c:\users\planeco\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.pdb
