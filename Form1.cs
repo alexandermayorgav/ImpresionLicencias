@@ -22,9 +22,43 @@ namespace ImpresionLicencias
         private const String nombreImgFrontal= "licenciaFrontal.jpg";
         private const String nombreImgTrasera = "licenciaTrasera.jpg";
         private Artifacts artifacts = new Artifacts();
-        public Form1()
+        private verLicencias objlicencia;
+
+        public Form1(verLicencias licencia)
         {
             InitializeComponent();
+            this.objlicencia = licencia;
+            setValoresFrontal();
+            setValoresTrasera();
+        }
+
+        private void setValoresFrontal()
+        {
+            lblNombre.Text = this.objlicencia.nombres.ToUpper().Trim();
+            lblApellidos.Text = this.objlicencia.primerAp.ToUpper().Trim() + " " + this.objlicencia.segundoAp.ToUpper().Trim();
+            lblRFC.Text = this.objlicencia.RFC.Trim();
+            lblDireccion.Text = this.objlicencia.calle.ToUpper().Trim() + " " + this.objlicencia.numeroCalle.Trim();
+            lblColonia.Text = this.objlicencia.colonia.ToUpper().Trim();
+            lblMunicipio.Text = this.objlicencia.municipio.Trim() + " " + this.objlicencia.CP.Trim();
+            lblEstado.Text = this.objlicencia.estado.Trim();
+            lblFechaExpedicion.Text = String.Format("{0:dd-MMM-yyyy}", this.objlicencia.fechaExpedicion).ToUpper().Trim();
+            lblFechaVencimiento.Text = String.Format("{0:dd-MMM-yyyy}", this.objlicencia.fechaExpira).ToUpper().Trim();
+            lblTipoLicencia.Text = this.objlicencia.TipoLicencia.Trim();
+            lblNumeroLicencia.Text = this.objlicencia.numero.Trim();
+        }
+
+        private void setValoresTrasera()
+        {
+            String valor = "-";
+            if (this.objlicencia.sangre.Contains("pos"))
+		        valor="+";
+            lblSangre.Text = this.objlicencia.sangre.Substring(0, 1).Trim() + valor;
+            lblEstatura.Text = this.objlicencia.estatura.ToString().Trim();
+            lblOjos.Text = this.objlicencia.ojos.Trim();
+            lblSeñas.Text = this.objlicencia.señas.Trim();
+            lblCabello.Text = this.objlicencia.cabello.Trim();
+            lblContacto.Text = this.objlicencia.contacto.Trim();
+            lblTelefonoContacto.Text = this.objlicencia.telContacto.Trim();
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -42,6 +76,11 @@ namespace ImpresionLicencias
                     card.Color2 = Image.FromFile(nombreImgTrasera);
                 PrintService.Print(card);
             }
+            if (MessageBox.Show("Desea activar la licencia?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)==DialogResult.OK)
+            {
+                new ConsumeWS().actualizarLicencia(this.objlicencia.idLicencias);
+            }
+
         }
 
         private void guardarImagen()

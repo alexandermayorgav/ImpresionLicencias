@@ -21,38 +21,31 @@ using System.Xml;
 using System.Net.Http;
 using System.Web;
 using System.Collections;
+using System.ComponentModel.DataAnnotations;
 namespace ImpresionLicencias
 {
     public class ConsumeWS
     {
+        private Request objRequest;
+        private String url = "http://wirecanary.com/licencia/app.php";
+        private Usuario objUsuario;
+        private Response objResponse;
+        private List<DatosWS> lstDatos;
 
-    }
-
-    public class DatosWS
-    {
-        public double time { get; set; }
-        public ArrayList recordset { get; set; }
-        public int numRows { get; set; }
-        public int numFields { get; set; }
-        public int lastInsertId { get; set; }
-        public string error { get; set; }
-        public ArrayList nameFields { get; set; }
-
-        private void iniciar()
+        public ConsumeWS()
         {
+            this.objRequest = new Request();
+            this.objResponse = new Response();
+            login();
+        }
 
-            String url = "http://wirecanary.com/licencia/app.php";
+        private void login()
+        {
+            this.objUsuario= new Usuario();
+            objUsuario.user = "bond";
+            objUsuario.pass = "6620b6b585264768253cf6f9e9e7a037d4a97b6bedde3499c1d071975155ec11ed8c205bcf1d3f07cc83f30036f76a14192104593262f1e37756d52eebfbecee";// SHA512("temporal007");
+            string jsonUser = JsonConvert.SerializeObject(objUsuario);
 
-
-            Usuario user = new Usuario();
-            user.user = "bond";
-            user.pass = "6620b6b585264768253cf6f9e9e7a037d4a97b6bedde3499c1d071975155ec11ed8c205bcf1d3f07cc83f30036f76a14192104593262f1e37756d52eebfbecee";// SHA512("temporal007");
-            string jsonUser = JsonConvert.SerializeObject(user);
-            //  MessageBox.Show(jsonUser);
-
-
-
-            Request objRequest = new Request();
             objRequest.cmd = "login";
             objRequest.log = "login";
             objRequest.origin = "Alexander";
@@ -61,31 +54,84 @@ namespace ImpresionLicencias
 
             string jsonRequest = JsonConvert.SerializeObject(objRequest);
 
-            String response = HttpPostRequest(url, JsonToDictionary(jsonRequest));
+            String response = HttpPostRequest(url, JsonToDictionary(jsonRequest,"request"));
 
-            //JsonArray ids = jsonValue.GetObject().GetNamedArray("data);
-            Response objResponse = JsonConvert.DeserializeObject<Response>(response);
+            this.objResponse = JsonConvert.DeserializeObject<Response>(response);
             String token = objResponse.data.Split(':')[1].Substring(1);
             token = token.Substring(0, token.Length - 2);
-            user.token = token;
-
-            
-
-            objRequest.cmd = "query";
-            objRequest.token = user.token;
-            Query query = new Query();
-            query.add("SELECT * FROM usuario");
-            objRequest.param = JsonConvert.SerializeObject(query);
-
-            response = HttpPostRequest(url, JsonToDictionary(JsonConvert.SerializeObject(objRequest)));
-            objResponse = JsonConvert.DeserializeObject<Response>(response);
-
-            List<DatosWS> datos = (List<DatosWS>)JsonConvert.DeserializeObject(objResponse.data, typeof(List<DatosWS>));
-
-
+            this.objUsuario.token = token;
         }
 
-        public string HttpPostRequest(string url, Dictionary<string, string> postParameters)
+        public void actualizarLicencia(int idLicencia)
+        {
+            ejecutarConsulta("UPDATE Licencia set estatus ='impresa' WHERE idLicencias = "+idLicencia);
+            ejecutarConsulta("UPDATE turno set estatus='entrega' WHERE idTramite = " + idLicencia);
+
+        }
+        public List<verLicencias> obtenerLicencias()
+        {
+            ejecutarConsulta("SELECT L.idLicencias, L.numero, P.idPersona, P.nombres, P.primerAp, P.segundoAp, TP.descripcion as TipoLicencia ,L.fechaExpedicion,L.fechaExpiracion,P.RFC, ID.nombreCalle, ID.numeroExterior, ID.Colonia,getMunicipioByCveMunCveEnt(ID.cveMun,ID.cveEnt) as Municipio ,ID.codigoPostal,getEstadoByCveEnt(ID.cveEnt) as Estado, DE.tipoSangre, DE.estatura, DE.colorOjos, DE.donaOrganos, DE.colorCabello, DE.senasParticulares,CE.nombre as contacto, CE.telefeno as telContacto FROM licencia L INNER JOIN tipoLicencia TP ON L.idTipoLicencia = TP.idTipoLicencia INNER JOIN persona P ON L.idPersona = P.idPersona INNER JOIN turno T on T.idTramite = L.idLicencias AND T.estatus = 'pago' INNER JOIN contacto_emergencia CE on P.idPersona = CE.idPersona INNER JOIN persona_domicilio PD ON PD.idPersona = P.idPersona INNER JOIN inegi_domicilio ID on ID.idDomicilio = PD.idDomicilio INNER JOIN persona_datos_extras DE ON DE.idPersona = P.idPersona WHERE L.estatus='enTramite'");
+            String[] arr;
+            List<verLicencias> lstLicencias =  new System.Collections.Generic.List<verLicencias>();
+            foreach (var item in this.lstDatos[0].recordset)
+            {
+                arr = item.ToString().Replace('\n', ' ').Trim().Replace('\r', ' ').Trim().Replace('\"', ' ').Trim().Replace('[', ' ').Trim().Replace(']', ' ').Trim().Replace('\t', ' ').Trim().Split(',');
+                lstLicencias.Add(new verLicencias
+                {
+                    idLicencias =Convert.ToInt32( arr[0]),
+                    numero = arr[1],
+                    nombres = arr[3],
+                    primerAp = arr[4],
+                    segundoAp = arr[5],
+                    idPersona =Convert.ToInt32( arr[2]),
+                    TipoLicencia = arr[6],
+                    fechaExpedicion = DateTime.Parse(arr[7]),
+                    fechaExpira = DateTime.Parse(arr[8]),
+                    RFC = arr[9],
+                    calle = arr[10],
+                    numeroCalle = arr[11],
+                    colonia = arr[12],
+                    municipio =  arr[13],
+                    CP =  arr[14],
+                    estado = arr[15],
+                    sangre = arr[16],
+                    estatura = Convert.ToInt32( arr[17]),
+                    ojos = arr[18],
+                    donador = arr[19].Equals("1")?true:false,
+                    cabello = arr[20],
+                    señas = arr[21],
+                    contacto = arr[22],
+                    telContacto = arr[23]
+                    
+                });
+            }
+            return lstLicencias;
+        }
+
+        private void ejecutarConsulta(String query)
+        {
+            try
+            {
+                this.objRequest.cmd = "query";
+                this.objRequest.token = this.objUsuario.token;
+                Query objQuery = new Query();
+                objQuery.add(query);
+                this.objRequest.param = JsonConvert.SerializeObject(objQuery);
+                string json = JsonConvert.SerializeObject(objRequest);
+                string mensaje = HttpPostRequest(url, JsonToDictionary(json, "request"));
+                this.objResponse = JsonConvert.DeserializeObject<Response>(mensaje);
+                this.lstDatos = (List<DatosWS>)JsonConvert.DeserializeObject(objResponse.data, typeof(List<DatosWS>));
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+            }
+
+            
+        }
+
+        private string HttpPostRequest(string url, Dictionary<string, string> postParameters)
         {
             string postData = "";
 
@@ -128,10 +174,10 @@ namespace ImpresionLicencias
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Dictionary<string, string> JsonToDictionary(string request)
+        public Dictionary<string, string> JsonToDictionary(string request, string paramName)
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
-            result.Add("request", request);
+            result.Add(paramName, request);
             return result;
         }
 
@@ -155,7 +201,67 @@ namespace ImpresionLicencias
                 return hashedInputStringBuilder.ToString();
             }
         }
+    }
+    public class Persona
+    {
+        public int idPersona { get; set; }
+        public string telCasa { get; set; }
+    }
+   
+    public class verLicencias {
+        [Display(AutoGenerateField = false)]
+       // [HiddenInput(DisplayValue = false)]
+        public int idLicencias { get; set; }
+        [Display(Name = "Número de Licencia")]
+        public string numero { get; set; }
+        [Display(Name ="Nombre")]
+        public string nombres { get; set; }
+        [Display(Name = "Apellido Paterno")]
+        public string primerAp { get; set; }
+        [Display(Name = "Apellido Materno")]
+        public string segundoAp { get; set; }
+        [Display(AutoGenerateField = false)]
+     //   [HiddenInput(DisplayValue = false)]
+            
+        public int idPersona { get; set; }
+        [Display(Name = "Tipo de Licencia")]
+        public string TipoLicencia { get; set; }
+        public DateTime fechaExpedicion { get; set; }
+        public DateTime fechaExpira { get; set; }
+        public string  RFC { get; set; }
 
+        public string calle { get; set; }
+        public string numeroCalle { get; set; }
+        public string colonia { get; set; }
+        public string municipio { get; set; }
+        public string CP { get; set; }
+        public string estado { get; set; }
+
+
+        public string sangre { get; set; }
+        public int estatura { get; set; }
+        public string ojos { get; set; }
+        public string requerimiento { get; set; }
+        public bool donador { get; set; }
+        public string cabello { get; set; }
+        public string señas { get; set; }
+        public string contacto { get; set; }
+        public string telContacto { get; set; }
+
+
+
+
+    }
+
+    public class DatosWS
+    {
+        public double time { get; set; }
+        public Newtonsoft.Json.Linq.JArray recordset { get; set; }
+        public int numRows { get; set; }
+        public int numFields { get; set; }
+        public int lastInsertId { get; set; }
+        public string error { get; set; }
+        public List<String> nameFields { get; set; }
     }
     public class Query
     {
@@ -177,7 +283,6 @@ namespace ImpresionLicencias
         public String pass { get; set; }
         public String token { get; set; }
     }
-
     public class Response
     {
 
@@ -185,7 +290,6 @@ namespace ImpresionLicencias
         public String msg { get; set; }
         public String data { get; set; }
     }
-
     public class Request
     {
         public String cmd { get; set; }
