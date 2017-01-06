@@ -64,7 +64,7 @@ namespace ImpresionLicencias
 
         public void actualizarLicencia(int idLicencia)
         {
-            ejecutarConsulta("UPDATE Licencia set estatus ='impresa' WHERE idLicencias = "+idLicencia);
+            ejecutarConsulta("UPDATE licencia set estatus ='impresa' WHERE idLicencias = "+idLicencia);
             ejecutarConsulta("UPDATE turno set estatus='entrega' WHERE idTramite = " + idLicencia);
 
         }
