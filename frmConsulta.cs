@@ -13,7 +13,7 @@ namespace ImpresionLicencias
     public partial class frmConsulta : Form
     {
         private ConsumeWS objWS;
-        private List<verLicencias> objVerLicencias;
+        private List<verLicencias> lstLicencias;
 
         public frmConsulta()
         {
@@ -26,12 +26,12 @@ namespace ImpresionLicencias
         {
         
         }
-        private void obtenerDatos()
+        private void mostrarDatos(List<verLicencias> datos)
         {
-            objVerLicencias = this.objWS.obtenerLicencias();
+            
             gridDatos.Rows.Clear();
             int row = 0;
-            foreach (var item in objVerLicencias)
+            foreach (var item in datos)
             {
                 this.gridDatos.Rows.Add();
                 this.gridDatos.Rows[row].Cells["numero"].Value = item.numero;
@@ -48,13 +48,30 @@ namespace ImpresionLicencias
         {
             obtenerDatos();
         }
+        private void obtenerDatos()
+        {
+            lstLicencias = this.objWS.obtenerLicencias();
+            mostrarDatos(lstLicencias);
+        }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int idLicencia = Convert.ToInt32( gridDatos.CurrentRow.Cells["idLicencia"].Value);
             //verLicencias o = this.objVerLicencias.Where(i => i.idLicencias == idLicencia).ToList().First();
-            Form1 frm = new Form1(this.objVerLicencias.Where(i=> i.idLicencias == idLicencia).ToList().First());
+            Form1 frm = new Form1(this.lstLicencias.Where(i=> i.idLicencias == idLicencia).ToList().First());
             frm.ShowDialog();
+            obtenerDatos();
+
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtBuscar.Text.Length != 0)
+            {
+                mostrarDatos(lstLicencias.Where(i => i.numero.Trim() == txtBuscar.Text || i.nombres.Trim().Contains(txtBuscar.Text) || i.primerAp.Contains(txtBuscar.Text) || i.segundoAp.Contains(txtBuscar.Text)).ToList());
+            }
+            else
+                mostrarDatos(lstLicencias);
         }
     }
 }

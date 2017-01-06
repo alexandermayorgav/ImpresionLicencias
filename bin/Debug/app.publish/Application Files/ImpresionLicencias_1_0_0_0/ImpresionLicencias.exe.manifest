@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="ImpresionLicencias.exe" version="1.0.0.0" publicKeyToken="026c424da1435275" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="1483747620_BT_printer.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="ImpresionLicencias" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="ImpresionLicencias.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet version="1" class="System.Security.NamedPermissionSet" Name="LocalIntranet" Description="Default rights given to applications on the local intranet" Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!-- Opciones del manifiesto de Control de cuentas de usuario
+             Si desea cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el 
+             nodo requestedExecutionLevel por alguno de los siguientes.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+            La especificación del nodo requestedExecutionLevel deshabilitará la virtualización de archivos y del Registro.
+            Si desea usar la virtualización de archivos y del Registro para la compatibilidad 
+            con versiones anteriores, elimine el nodo requestedExecutionLevel.
+        -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ImpresionLicencias.exe" size="2706432">
+      <assemblyIdentity name="ImpresionLicencias" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>/KZOdhmxAaob1z6j9WSKE7agZAJC4OrlX9QQdfUqfK0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="526336">
+      <assemblyIdentity name="Newtonsoft.Json" version="9.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>V14w+Y5OpCyeUW7ci7sprYtQsXOj5rNrW6OeEzzOlAY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="1483747620_BT_printer.ico" size="370070">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>PJV+jXaZRshcsE6+CIXcoQb1evO4pYuxjXpHf10wECQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="CP500Extensions.dll" size="30720">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>gO9UsIHaCobBZUzsG+dF+lvHWHstXEGXLRKUgEGlnzU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ImpresionLicencias.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="msvcr100d.dll" size="1467200">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XkfEzwhFDqc9EOcF/c5yes5m+Lz0mEAosbF8kbj2MKY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+    <application>
+      <!-- Lista de todas las versiones de Windows con las que esta aplicación está diseñada para funcionar. 
+      Windows seleccionará automáticamente el entorno de mayor compatibilidad.-->
+      <!-- Si la aplicación está diseñada para funcionar con Windows Vista, quite los comentarios del siguiente nodo supportedOS-->
+      <!--<supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}"></supportedOS>-->
+      <!-- Si la aplicación está diseñada para funcionar con Windows 7, quite los comentarios del siguiente nodo supportedOS-->
+      <!--<supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>-->
+      <!-- Si la aplicación está diseñada para funcionar con Windows 8, quite los comentarios del siguiente nodo supportedOS-->
+      <!--<supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"></supportedOS>-->
+    </application>
+  </compatibility>
+<publisherIdentity name="CN=PLANECO-PC\PLANECO" issuerKeyHash="2cda35e5e0bfcf34cf87784f8388bbe69bbf46da" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>NOVdczASdREQl5cHjRENe8y4YshrUz7FQEQ5D1ikBQ0=</DigestValue></Reference></SignedInfo><SignatureValue>bAf4nDv6iyLduhCbVr+SMfBn0han3+CnYDll3w2HK/VLmDhM7JERGn3h8/GTxYJaIQWpYJ9J8kg1HZ4JC3wS0lPLuNT6PIU2g08kjvHUpMFC4/dMHtcVr0Sy0HklCzLMXd87gVwdzmB9lde5A1YDyYJ3Or8gkkk/S792c9jTmAs=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>r2IXMVf0ukYfn3S7KNi8QGOMMigXs+5vMvzhk5+4MfF/BX/XjjaKwn1/N2brGWO4VhZgv8xqZKjAinINdnur2YIcmiWTefSGq1JLLpGxf+r7tQeuRJ87VDf5Q+Xzlh0BVPOnd1T8JnUIwbPa7/0QLX4XBevx9BicGsk5wQSREoc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="0d05a4580f394440c53e536bc862b8cc7b0d118d0797971011751230735de534" Description="" Url=""><as:assemblyIdentity name="ImpresionLicencias.exe" version="1.0.0.0" publicKeyToken="026c424da1435275" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=PLANECO-PC\PLANECO</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>HVSMq5XhQ+Bpb4gJFLJKx/OeiTVA3L67WZIarbW2kqA=</DigestValue></Reference></SignedInfo><SignatureValue>Owux9BvNUYwy3/Wir1dK0+5DLNnfZ3bIJGkrCgdFzwPPTKxtKMgSqUYKVlATj2ZYh38p/z0vhGE62f6Cq8bVYFGZS2/+0SayfDnQ20RHC1JVaP8XYiq3LITZ/O05nt7hkCkKG2Rk/2rDZYsMZ9aXq8YAz9VrPnoY1aNPGzejZSU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>r2IXMVf0ukYfn3S7KNi8QGOMMigXs+5vMvzhk5+4MfF/BX/XjjaKwn1/N2brGWO4VhZgv8xqZKjAinINdnur2YIcmiWTefSGq1JLLpGxf+r7tQeuRJ87VDf5Q+Xzlh0BVPOnd1T8JnUIwbPa7/0QLX4XBevx9BicGsk5wQSREoc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB4TCCAUqgAwIBAgIQX/Z319A7QYFFriWDNbNYZTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDHiQAUABMAEEATgBFAEMATwAtAFAAQwBcAFAATABBAE4ARQBDAE8wHhcNMTcwMTA2MTgwODI2WhcNMTgwMTA3MDAwODI2WjAvMS0wKwYDVQQDHiQAUABMAEEATgBFAEMATwAtAFAAQwBcAFAATABBAE4ARQBDAE8wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAK9iFzFX9LpGH590uyjYvEBjjDIoF7PubzL84ZOfuDHxfwV/1442isJ9fzdm6xljuFYWYL/MamSowIpyDXZ7q9mCHJolk3n0hqtSSy6RsX/q+7UHrkSfO1Q3+UPl85YdAVTzp3dU/CZ1CMGz2u/9EC1+FwXr8fQYnBrJOcEEkRKHAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAkFUU0Xlp1RopOJRmUOxmtQdgb36T9Imr0FulDFrL9rXZ2kNj1H/RMzKVYQR1p96kYWiB5gjHiXaYcD73/iUVb1B8ttQ88g18t2AzFYxMoJGky2xJeeS+MizGzPmKHpoJE8CBQ/sT7aRfdC4s7pwMPFF9hHDXx7mw5CkkwwpHqmM=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

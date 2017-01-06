@@ -32,7 +32,9 @@
             this.tabFrontal = new System.Windows.Forms.TabPage();
             this.panelFrontal = new System.Windows.Forms.Panel();
             this.lblSecretaria = new System.Windows.Forms.Label();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.lblSecretario = new System.Windows.Forms.Label();
+            this.pbFirmaSecretario = new System.Windows.Forms.PictureBox();
             this.lblFechaVencimiento = new System.Windows.Forms.Label();
             this.lblFechaExpedicion = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -47,10 +49,12 @@
             this.lblApellidos = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pbFotoMicro = new System.Windows.Forms.PictureBox();
             this.lblNumeroLicencia = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTipoLicencia = new System.Windows.Forms.Label();
+            this.pbFotoPersona = new System.Windows.Forms.PictureBox();
             this.tabTrasera = new System.Windows.Forms.TabPage();
             this.panelTrasera = new System.Windows.Forms.Panel();
             this.lblTelefonoContacto = new System.Windows.Forms.Label();
@@ -65,52 +69,48 @@
             this.lblSangre = new System.Windows.Forms.Label();
             this.lblDonador = new System.Windows.Forms.Label();
             this.lblTextoDonador = new System.Windows.Forms.Label();
+            this.pbQR = new System.Windows.Forms.PictureBox();
+            this.pbHuella = new System.Windows.Forms.PictureBox();
+            this.pbFirmaPersona = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.pbPDF417 = new System.Windows.Forms.PictureBox();
             this.tabVista = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pbImgZoom = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pbImgFrontal = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pbImgTrasera = new System.Windows.Forms.PictureBox();
             this.containerPrincipal = new System.Windows.Forms.SplitContainer();
             this.btnImprimir = new System.Windows.Forms.Button();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.pbFirmaSecretario = new System.Windows.Forms.PictureBox();
-            this.pbFotoMicro = new System.Windows.Forms.PictureBox();
-            this.pbFotoPersona = new System.Windows.Forms.PictureBox();
-            this.pbQR = new System.Windows.Forms.PictureBox();
-            this.pbHuella = new System.Windows.Forms.PictureBox();
-            this.pbFirmaPersona = new System.Windows.Forms.PictureBox();
-            this.pbPDF417 = new System.Windows.Forms.PictureBox();
-            this.pbImgZoom = new System.Windows.Forms.PictureBox();
-            this.pbImgFrontal = new System.Windows.Forms.PictureBox();
-            this.pbImgTrasera = new System.Windows.Forms.PictureBox();
             this.Tab1.SuspendLayout();
             this.tabFrontal.SuspendLayout();
             this.panelFrontal.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.tabTrasera.SuspendLayout();
-            this.panelTrasera.SuspendLayout();
-            this.tabVista.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.containerPrincipal)).BeginInit();
-            this.containerPrincipal.Panel1.SuspendLayout();
-            this.containerPrincipal.Panel2.SuspendLayout();
-            this.containerPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFirmaSecretario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoMicro)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoPersona)).BeginInit();
+            this.tabTrasera.SuspendLayout();
+            this.panelTrasera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbQR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHuella)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFirmaPersona)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPDF417)).BeginInit();
+            this.tabVista.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImgZoom)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImgFrontal)).BeginInit();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImgTrasera)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.containerPrincipal)).BeginInit();
+            this.containerPrincipal.Panel1.SuspendLayout();
+            this.containerPrincipal.Panel2.SuspendLayout();
+            this.containerPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // Tab1
@@ -181,6 +181,17 @@
             this.lblSecretaria.Text = "Secretario de Planeación y Finanzas";
             this.lblSecretaria.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // pbLogo
+            // 
+            this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbLogo.Image = global::ImpresionLicencias.Properties.Resources.bajaCalifornia;
+            this.pbLogo.Location = new System.Drawing.Point(3, 3);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(2048, 450);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
+            // 
             // lblSecretario
             // 
             this.lblSecretario.AutoSize = true;
@@ -191,6 +202,16 @@
             this.lblSecretario.Size = new System.Drawing.Size(535, 46);
             this.lblSecretario.TabIndex = 23;
             this.lblSecretario.Text = "Antonio Valladolid Rodríguez";
+            // 
+            // pbFirmaSecretario
+            // 
+            this.pbFirmaSecretario.Image = global::ImpresionLicencias.Properties.Resources.Firma_Harriet;
+            this.pbFirmaSecretario.Location = new System.Drawing.Point(1667, 1040);
+            this.pbFirmaSecretario.Name = "pbFirmaSecretario";
+            this.pbFirmaSecretario.Size = new System.Drawing.Size(250, 149);
+            this.pbFirmaSecretario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFirmaSecretario.TabIndex = 22;
+            this.pbFirmaSecretario.TabStop = false;
             // 
             // lblFechaVencimiento
             // 
@@ -346,6 +367,16 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Nombre/Name";
             // 
+            // pbFotoMicro
+            // 
+            this.pbFotoMicro.Image = global::ImpresionLicencias.Properties.Resources.tmp2;
+            this.pbFotoMicro.Location = new System.Drawing.Point(1726, 539);
+            this.pbFotoMicro.Name = "pbFotoMicro";
+            this.pbFotoMicro.Size = new System.Drawing.Size(300, 300);
+            this.pbFotoMicro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFotoMicro.TabIndex = 6;
+            this.pbFotoMicro.TabStop = false;
+            // 
             // lblNumeroLicencia
             // 
             this.lblNumeroLicencia.AutoSize = true;
@@ -391,6 +422,16 @@
             this.lblTipoLicencia.TabIndex = 2;
             this.lblTipoLicencia.Text = "AUTOMOVILISTA";
             this.lblTipoLicencia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pbFotoPersona
+            // 
+            this.pbFotoPersona.Image = global::ImpresionLicencias.Properties.Resources.Gergely;
+            this.pbFotoPersona.Location = new System.Drawing.Point(-2, 491);
+            this.pbFotoPersona.Name = "pbFotoPersona";
+            this.pbFotoPersona.Size = new System.Drawing.Size(600, 650);
+            this.pbFotoPersona.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFotoPersona.TabIndex = 1;
+            this.pbFotoPersona.TabStop = false;
             // 
             // tabTrasera
             // 
@@ -568,6 +609,35 @@
     "nsentimiento expreso en los términos de la Ley General de Salud)";
             this.lblTextoDonador.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // pbQR
+            // 
+            this.pbQR.Image = global::ImpresionLicencias.Properties.Resources.qrcode;
+            this.pbQR.Location = new System.Drawing.Point(1663, 725);
+            this.pbQR.Name = "pbQR";
+            this.pbQR.Size = new System.Drawing.Size(350, 350);
+            this.pbQR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbQR.TabIndex = 14;
+            this.pbQR.TabStop = false;
+            // 
+            // pbHuella
+            // 
+            this.pbHuella.Image = global::ImpresionLicencias.Properties.Resources.FINGERPRINT;
+            this.pbHuella.Location = new System.Drawing.Point(1213, 823);
+            this.pbHuella.Name = "pbHuella";
+            this.pbHuella.Size = new System.Drawing.Size(300, 350);
+            this.pbHuella.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHuella.TabIndex = 13;
+            this.pbHuella.TabStop = false;
+            // 
+            // pbFirmaPersona
+            // 
+            this.pbFirmaPersona.Image = global::ImpresionLicencias.Properties.Resources.firmaPErsona;
+            this.pbFirmaPersona.Location = new System.Drawing.Point(93, 968);
+            this.pbFirmaPersona.Name = "pbFirmaPersona";
+            this.pbFirmaPersona.Size = new System.Drawing.Size(350, 244);
+            this.pbFirmaPersona.TabIndex = 12;
+            this.pbFirmaPersona.TabStop = false;
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -612,6 +682,16 @@
             this.label14.TabIndex = 8;
             this.label14.Text = "Tipo de Sangre:";
             // 
+            // pbPDF417
+            // 
+            this.pbPDF417.Image = global::ImpresionLicencias.Properties.Resources.pdf417;
+            this.pbPDF417.Location = new System.Drawing.Point(26, 361);
+            this.pbPDF417.Name = "pbPDF417";
+            this.pbPDF417.Size = new System.Drawing.Size(1350, 250);
+            this.pbPDF417.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPDF417.TabIndex = 1;
+            this.pbPDF417.TabStop = false;
+            // 
             // tabVista
             // 
             this.tabVista.Controls.Add(this.groupBox3);
@@ -634,6 +714,15 @@
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             // 
+            // pbImgZoom
+            // 
+            this.pbImgZoom.Location = new System.Drawing.Point(16, 23);
+            this.pbImgZoom.Name = "pbImgZoom";
+            this.pbImgZoom.Size = new System.Drawing.Size(987, 532);
+            this.pbImgZoom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImgZoom.TabIndex = 1;
+            this.pbImgZoom.TabStop = false;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.pbImgFrontal);
@@ -644,6 +733,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fontral";
             // 
+            // pbImgFrontal
+            // 
+            this.pbImgFrontal.Location = new System.Drawing.Point(13, 19);
+            this.pbImgFrontal.Name = "pbImgFrontal";
+            this.pbImgFrontal.Size = new System.Drawing.Size(422, 250);
+            this.pbImgFrontal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImgFrontal.TabIndex = 0;
+            this.pbImgFrontal.TabStop = false;
+            this.pbImgFrontal.MouseLeave += new System.EventHandler(this.pbImgFrontal_MouseLeave);
+            this.pbImgFrontal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbImgFrontal_MouseMove);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.pbImgTrasera);
@@ -653,6 +753,17 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Trasera";
+            // 
+            // pbImgTrasera
+            // 
+            this.pbImgTrasera.Location = new System.Drawing.Point(13, 19);
+            this.pbImgTrasera.Name = "pbImgTrasera";
+            this.pbImgTrasera.Size = new System.Drawing.Size(422, 250);
+            this.pbImgTrasera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImgTrasera.TabIndex = 0;
+            this.pbImgTrasera.TabStop = false;
+            this.pbImgTrasera.MouseLeave += new System.EventHandler(this.pbImgTrasera_MouseLeave);
+            this.pbImgTrasera.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbImgTrasera_MouseMove);
             // 
             // containerPrincipal
             // 
@@ -685,117 +796,6 @@
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
-            // pbLogo
-            // 
-            this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbLogo.Image = global::ImpresionLicencias.Properties.Resources.bajaCalifornia;
-            this.pbLogo.Location = new System.Drawing.Point(3, 3);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(2048, 450);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogo.TabIndex = 0;
-            this.pbLogo.TabStop = false;
-            // 
-            // pbFirmaSecretario
-            // 
-            this.pbFirmaSecretario.Image = global::ImpresionLicencias.Properties.Resources.Firma_Harriet;
-            this.pbFirmaSecretario.Location = new System.Drawing.Point(1667, 1040);
-            this.pbFirmaSecretario.Name = "pbFirmaSecretario";
-            this.pbFirmaSecretario.Size = new System.Drawing.Size(250, 149);
-            this.pbFirmaSecretario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbFirmaSecretario.TabIndex = 22;
-            this.pbFirmaSecretario.TabStop = false;
-            // 
-            // pbFotoMicro
-            // 
-            this.pbFotoMicro.Image = global::ImpresionLicencias.Properties.Resources.tmp2;
-            this.pbFotoMicro.Location = new System.Drawing.Point(1726, 539);
-            this.pbFotoMicro.Name = "pbFotoMicro";
-            this.pbFotoMicro.Size = new System.Drawing.Size(300, 300);
-            this.pbFotoMicro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbFotoMicro.TabIndex = 6;
-            this.pbFotoMicro.TabStop = false;
-            // 
-            // pbFotoPersona
-            // 
-            this.pbFotoPersona.Image = global::ImpresionLicencias.Properties.Resources.Gergely;
-            this.pbFotoPersona.Location = new System.Drawing.Point(-2, 491);
-            this.pbFotoPersona.Name = "pbFotoPersona";
-            this.pbFotoPersona.Size = new System.Drawing.Size(600, 650);
-            this.pbFotoPersona.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbFotoPersona.TabIndex = 1;
-            this.pbFotoPersona.TabStop = false;
-            // 
-            // pbQR
-            // 
-            this.pbQR.Image = global::ImpresionLicencias.Properties.Resources.qrcode;
-            this.pbQR.Location = new System.Drawing.Point(1663, 725);
-            this.pbQR.Name = "pbQR";
-            this.pbQR.Size = new System.Drawing.Size(350, 350);
-            this.pbQR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbQR.TabIndex = 14;
-            this.pbQR.TabStop = false;
-            // 
-            // pbHuella
-            // 
-            this.pbHuella.Image = global::ImpresionLicencias.Properties.Resources.FINGERPRINT;
-            this.pbHuella.Location = new System.Drawing.Point(1213, 823);
-            this.pbHuella.Name = "pbHuella";
-            this.pbHuella.Size = new System.Drawing.Size(300, 350);
-            this.pbHuella.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHuella.TabIndex = 13;
-            this.pbHuella.TabStop = false;
-            // 
-            // pbFirmaPersona
-            // 
-            this.pbFirmaPersona.Image = global::ImpresionLicencias.Properties.Resources.firmaPErsona;
-            this.pbFirmaPersona.Location = new System.Drawing.Point(93, 968);
-            this.pbFirmaPersona.Name = "pbFirmaPersona";
-            this.pbFirmaPersona.Size = new System.Drawing.Size(350, 244);
-            this.pbFirmaPersona.TabIndex = 12;
-            this.pbFirmaPersona.TabStop = false;
-            // 
-            // pbPDF417
-            // 
-            this.pbPDF417.Image = global::ImpresionLicencias.Properties.Resources.pdf417;
-            this.pbPDF417.Location = new System.Drawing.Point(26, 361);
-            this.pbPDF417.Name = "pbPDF417";
-            this.pbPDF417.Size = new System.Drawing.Size(1350, 250);
-            this.pbPDF417.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPDF417.TabIndex = 1;
-            this.pbPDF417.TabStop = false;
-            // 
-            // pbImgZoom
-            // 
-            this.pbImgZoom.Location = new System.Drawing.Point(16, 23);
-            this.pbImgZoom.Name = "pbImgZoom";
-            this.pbImgZoom.Size = new System.Drawing.Size(987, 532);
-            this.pbImgZoom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImgZoom.TabIndex = 1;
-            this.pbImgZoom.TabStop = false;
-            // 
-            // pbImgFrontal
-            // 
-            this.pbImgFrontal.Location = new System.Drawing.Point(13, 19);
-            this.pbImgFrontal.Name = "pbImgFrontal";
-            this.pbImgFrontal.Size = new System.Drawing.Size(422, 250);
-            this.pbImgFrontal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImgFrontal.TabIndex = 0;
-            this.pbImgFrontal.TabStop = false;
-            this.pbImgFrontal.MouseLeave += new System.EventHandler(this.pbImgFrontal_MouseLeave);
-            this.pbImgFrontal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbImgFrontal_MouseMove);
-            // 
-            // pbImgTrasera
-            // 
-            this.pbImgTrasera.Location = new System.Drawing.Point(13, 19);
-            this.pbImgTrasera.Name = "pbImgTrasera";
-            this.pbImgTrasera.Size = new System.Drawing.Size(422, 250);
-            this.pbImgTrasera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImgTrasera.TabIndex = 0;
-            this.pbImgTrasera.TabStop = false;
-            this.pbImgTrasera.MouseLeave += new System.EventHandler(this.pbImgTrasera_MouseLeave);
-            this.pbImgTrasera.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbImgTrasera_MouseMove);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -804,6 +804,7 @@
             this.Controls.Add(this.containerPrincipal);
             this.MinimizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Impresion";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -811,29 +812,29 @@
             this.tabFrontal.ResumeLayout(false);
             this.panelFrontal.ResumeLayout(false);
             this.panelFrontal.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.tabTrasera.ResumeLayout(false);
-            this.panelTrasera.ResumeLayout(false);
-            this.panelTrasera.PerformLayout();
-            this.tabVista.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.containerPrincipal.Panel1.ResumeLayout(false);
-            this.containerPrincipal.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.containerPrincipal)).EndInit();
-            this.containerPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFirmaSecretario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoMicro)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoPersona)).EndInit();
+            this.tabTrasera.ResumeLayout(false);
+            this.panelTrasera.ResumeLayout(false);
+            this.panelTrasera.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbQR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHuella)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFirmaPersona)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPDF417)).EndInit();
+            this.tabVista.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImgZoom)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImgFrontal)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImgTrasera)).EndInit();
+            this.containerPrincipal.Panel1.ResumeLayout(false);
+            this.containerPrincipal.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.containerPrincipal)).EndInit();
+            this.containerPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -79,6 +79,7 @@ namespace ImpresionLicencias
             if (MessageBox.Show("Desea activar la licencia?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)==DialogResult.OK)
             {
                 new ConsumeWS().actualizarLicencia(this.objlicencia.idLicencias);
+                this.Close();
             }
 
         }
