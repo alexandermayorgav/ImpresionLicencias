@@ -16,7 +16,7 @@ namespace ImpresionLicencias
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmConsulta());
+            Application.Run(new frmInterfazWEB());
         }
     }
 }

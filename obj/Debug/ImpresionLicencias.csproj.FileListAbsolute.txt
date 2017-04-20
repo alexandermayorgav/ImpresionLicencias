@@ -20,3 +20,23 @@ C:\Users\PLANECO\documents\visual studio 2012\Projects\ImpresionLicencias\Impres
 C:\Users\PLANECO\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.TrustInfo.xml
 C:\Users\PLANECO\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.exe.manifest
 C:\Users\PLANECO\documents\visual studio 2012\Projects\ImpresionLicencias\ImpresionLicencias\obj\Debug\ImpresionLicencias.application
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\bin\Debug\ImpresionLicencias.exe.config
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.exe
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.pdb
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\bin\Debug\CP500Extensions.dll
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\bin\Debug\msvcr100d.dll
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\bin\Debug\ImpresionLicencias.exe.manifest
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\bin\Debug\ImpresionLicencias.application
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\bin\Debug\ImpresionLicencias.exe
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\bin\Debug\ImpresionLicencias.pdb
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\bin\Debug\Newtonsoft.Json.dll
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\bin\Debug\Newtonsoft.Json.xml
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.csprojResolveAssemblyReference.cache
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.Form1.resources
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.frmConsulta.resources
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.Properties.Resources.resources
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.csproj.GenerateResource.Cache
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.TrustInfo.xml
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.exe.manifest
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.application
+C:\Users\vanny\Documents\GitHub\ImpresionLicencias\obj\Debug\ImpresionLicencias.frmInterfazWEB.resources
