@@ -27,7 +27,7 @@ namespace ImpresionLicencias
     public class ConsumeWS
     {
         private Request objRequest;
-        private String url = "http://wirecanary.com/licencia/app.php";
+        private String url = "http://localhost/licencia/app.php";
         private Usuario objUsuario;
         private Response objResponse;
         private List<DatosWS> lstDatos;
@@ -68,6 +68,47 @@ namespace ImpresionLicencias
             ejecutarConsulta("UPDATE turno set estatus='entrega' WHERE idTramite = " + idLicencia);
 
         }
+        public verLicencias obtenerLicenciasByIdLicencia(int idLicencia)
+        {
+            ejecutarConsulta("SELECT L.idLicencias, L.numero, P.idPersona, P.nombres, P.primerAp, P.segundoAp, TP.descripcion AS TipoLicencia, L.fechaExpedicion, L.fechaExpiracion, P.RFC, ID.nombreCalle, ID.numeroExterior, ID.Colonia, getMunicipioByCveMunCveEnt(ID.cveMun, ID.cveEnt) AS Municipio, ID.codigoPostal, getEstadoByCveEnt(ID.cveEnt) AS Estado, DE.tipoSangre, DE.estatura, DE.colorOjos, DE.donaOrganos, DE.colorCabello, DE.senasParticulares, CE.nombre AS contacto, CE.telefeno AS telContacto,P.idPersona FROM licencia L INNER JOIN tipoLicencia TP ON L.idTipoLicencia = TP.idTipoLicencia INNER JOIN persona P ON L.idPersona = P.idPersona INNER JOIN turno T ON T.idTipoLicencia = L.idTipoLicencia AND T.idPersona = L.idPersona AND T.estatus =  'pago' INNER JOIN  contacto_emergencia CE ON P.idPersona = CE.idPersona INNER JOIN persona_domicilio PD ON PD.idPersona = P.idPersona INNER JOIN inegi_domicilio ID ON ID.idDomicilio = PD.idDomicilio INNER JOIN persona_datos_extras DE ON DE.idPersona = P.idPersona  WHERE L.estatus='enTramite' AND L.idLicencias =" + idLicencia.ToString());
+            String[] arr;
+            verLicencias objLicencia = null;
+            foreach (var item in this.lstDatos[0].recordset)
+            {
+                arr = item.ToString().Replace('\n', ' ').Trim().Replace('\r', ' ').Trim().Replace('\"', ' ').Trim().Replace('[', ' ').Trim().Replace(']', ' ').Trim().Replace('\t', ' ').Trim().Split(',');
+                objLicencia = new  verLicencias
+                {
+                    idLicencias = Convert.ToInt32(arr[0]),
+                    numero = arr[1],
+                    nombres = arr[3],
+                    primerAp = arr[4],
+                    segundoAp = arr[5],
+                    idPersona = Convert.ToInt32(arr[2]),
+                    TipoLicencia = arr[6],
+                    fechaExpedicion = DateTime.Parse(arr[7]),
+                    fechaExpira = DateTime.Parse(arr[8]),
+                    RFC = arr[9],
+                    calle = arr[10],
+                    numeroCalle = arr[11],
+                    colonia = arr[12],
+                    municipio = arr[13],
+                    CP = arr[14],
+                    estado = arr[15],
+                    sangre = arr[16],
+                    estatura = Convert.ToInt32(arr[17]),
+                    ojos = arr[18],
+                    donador = arr[19].Equals("1") ? true : false,
+                    cabello = arr[20],
+                    señas = arr[21],
+                    contacto = arr[22],
+                    telContacto = arr[23]
+
+                };
+            }
+            return objLicencia;
+        }
+
+
         public List<verLicencias> obtenerLicencias()
         {
             ejecutarConsulta("SELECT L.idLicencias, L.numero, P.idPersona, P.nombres, P.primerAp, P.segundoAp, TP.descripcion as TipoLicencia ,L.fechaExpedicion,L.fechaExpiracion,P.RFC, ID.nombreCalle, ID.numeroExterior, ID.Colonia,getMunicipioByCveMunCveEnt(ID.cveMun,ID.cveEnt) as Municipio ,ID.codigoPostal,getEstadoByCveEnt(ID.cveEnt) as Estado, DE.tipoSangre, DE.estatura, DE.colorOjos, DE.donaOrganos, DE.colorCabello, DE.senasParticulares,CE.nombre as contacto, CE.telefeno as telContacto FROM licencia L INNER JOIN tipoLicencia TP ON L.idTipoLicencia = TP.idTipoLicencia INNER JOIN persona P ON L.idPersona = P.idPersona INNER JOIN turno T on T.idTramite = L.idLicencias AND T.estatus = 'pago' INNER JOIN contacto_emergencia CE on P.idPersona = CE.idPersona INNER JOIN persona_domicilio PD ON PD.idPersona = P.idPersona INNER JOIN inegi_domicilio ID on ID.idDomicilio = PD.idDomicilio INNER JOIN persona_datos_extras DE ON DE.idPersona = P.idPersona WHERE L.estatus='enTramite'");
