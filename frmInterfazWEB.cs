@@ -23,11 +23,11 @@ namespace ImpresionLicencias
         private byte[] buffer;
         private readonly int puerto = 1500;
         private Artifacts artifacts = new Artifacts();
-        private readonly string impresora = "doPDF 8";//"TOPPAN CP500"
+        private readonly string impresora = "doPDF 8";//"TOPPAN CP500";
         private EstatusImpresora estatusImpresora;
         private EstatusImpresion estatusImpresion;
-        private readonly string serverName = "http://localhost/prueba/";
-        private readonly string[] separador = new string[] { ".jpg" };
+        private readonly string serverName = "http://localhost/ImpresionWeb/";
+        //private readonly string[] separador = new string[] { ".jpg" };
         public enum EstatusImpresora {
             Conectada,
             Desconectada
@@ -67,18 +67,12 @@ namespace ImpresionLicencias
         }
 
 
-        private void imprimirLicencia(Image imgFrontal, Image imgTrasera)
+        private void imprimirLicencia(int idLicencia)
         {
             this.estatusImpresion = EstatusImpresion.Error;
-            if (ValidateChildren())
-            {
-                CardModel card = new CardModel(artifacts);
-                card.PrinterName = impresora;
-                card.Color1 =  imgFrontal;
-                card.Color2 = imgTrasera;
-                PrintService.Print(card);
-                this.estatusImpresion = EstatusImpresion.OK;
-            }
+            Form1 frm = new Form1(new ConsumeWS().obtenerLicenciasByIdLicencia(idLicencia));
+            frm.ShowDialog();
+            this.estatusImpresion = EstatusImpresion.OK;
         }
 
         void procces_incoming_socket(IAsyncResult socket_object)
@@ -110,10 +104,10 @@ namespace ImpresionLicencias
                 int bytes_recieved = re_socket.EndReceive(socket);
                 string data = UTF8Encoding.UTF8.GetString(buffer);
 
-                string[] imagen = data.Split(separador, StringSplitOptions.None);
-                //imprimirLicencia(imagenFromURL(imagen[0]), imagenFromURL(imagen[1]));
-                pbFrontal.Image =imagenFromURL(imagen[0]);
-                pbTrasera.Image = imagenFromURL(imagen[1]);
+                //string[] imagen = data.Split(separador, StringSplitOptions.None);
+                imprimirLicencia(5);
+                //pbFrontal.Image =imagenFromURL(imagen[0]);
+                //pbTrasera.Image = imagenFromURL(imagen[1]);
                 flag = false;
                 respuesta = this.estatusImpresion.ToString();
             }

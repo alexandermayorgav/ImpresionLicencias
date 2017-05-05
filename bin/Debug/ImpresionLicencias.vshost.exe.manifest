@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ImpresionLicencias.exe" size="2589136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ImpresionLicencias.exe" size="2593280">
       <assemblyIdentity name="ImpresionLicencias" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>avcx8CL3zkq9bhEc5fHD4acbaMRkcnz5AJcVzMc97uw=</dsig:DigestValue>
+        <dsig:DigestValue>f8dZI20+PyxKKOX3Fchr++lxX0h5LU6hTDlmdu66GMM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
