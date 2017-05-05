@@ -31,7 +31,7 @@ namespace ImpresionLicencias
         private Usuario objUsuario;
         private Response objResponse;
         private List<DatosWS> lstDatos;
-
+       
         public ConsumeWS()
         {
             this.objRequest = new Request();
@@ -68,6 +68,26 @@ namespace ImpresionLicencias
             ejecutarConsulta("UPDATE turno set estatus='entrega' WHERE idTramite = " + idLicencia);
 
         }
+        public List<DocumentoLicencia> getDocumentosLicencia(int idPersona)
+        {
+
+            ejecutarConsulta("SELECT D.descripcion as Documento, PD.documentoimagen FROM `persona_documento` PD INNER JOIN documento D ON PD.iddocumento=D.iddocumento WHERE PD.idPersona= " + idPersona.ToString() +" UNION (SELECT  'Biometrico',archivo FROM persona_biometrico WHERE idPersona=" + idPersona.ToString() + " LIMIT 1 )");
+            List<DocumentoLicencia> lstDocumentos = new System.Collections.Generic.List<DocumentoLicencia>();
+            String[] arr;
+            foreach (var item in this.lstDatos[0].recordset)
+            {
+                arr = item.ToString().Replace('\n', ' ').Trim().Replace('\r', ' ').Trim().Replace('\"', ' ').Trim().Replace('[', ' ').Trim().Replace(']', ' ').Trim().Replace('\t', ' ').Trim().Split(',');
+                lstDocumentos.Add(
+                    new DocumentoLicencia() 
+                    { 
+                        imagen =  (DocumentoLicencia.TipoImagen) Enum.Parse(typeof(DocumentoLicencia.TipoImagen),arr[0]),
+                        archivo = arr[1].TrimStart().TrimEnd()
+                    }
+                    );
+            }
+            return lstDocumentos;
+        }
+        
         public verLicencias obtenerLicenciasByIdLicencia(int idLicencia)
         {
             ejecutarConsulta("SELECT L.idLicencias, L.numero, P.idPersona, P.nombres, P.primerAp, P.segundoAp, TP.descripcion AS TipoLicencia, L.fechaExpedicion, L.fechaExpiracion, P.RFC, ID.nombreCalle, ID.numeroExterior, ID.Colonia, getMunicipioByCveMunCveEnt(ID.cveMun, ID.cveEnt) AS Municipio, ID.codigoPostal, getEstadoByCveEnt(ID.cveEnt) AS Estado, DE.tipoSangre, DE.estatura, DE.colorOjos, DE.donaOrganos, DE.colorCabello, DE.senasParticulares, CE.nombre AS contacto, CE.telefeno AS telContacto,P.idPersona FROM licencia L INNER JOIN tipoLicencia TP ON L.idTipoLicencia = TP.idTipoLicencia INNER JOIN persona P ON L.idPersona = P.idPersona INNER JOIN turno T ON T.idTipoLicencia = L.idTipoLicencia AND T.idPersona = L.idPersona AND T.estatus =  'pago' INNER JOIN  contacto_emergencia CE ON P.idPersona = CE.idPersona INNER JOIN persona_domicilio PD ON PD.idPersona = P.idPersona INNER JOIN inegi_domicilio ID ON ID.idDomicilio = PD.idDomicilio INNER JOIN persona_datos_extras DE ON DE.idPersona = P.idPersona  WHERE L.estatus='enTramite' AND L.idLicencias =" + idLicencia.ToString());
@@ -247,6 +267,13 @@ namespace ImpresionLicencias
     {
         public int idPersona { get; set; }
         public string telCasa { get; set; }
+    }
+
+    public class DocumentoLicencia
+    {
+        public enum TipoImagen { Fotografia,Firma,Biometrico}
+        public TipoImagen imagen { get; set; }
+        public string archivo { get; set; }
     }
    
     public class verLicencias {

@@ -59,6 +59,7 @@ namespace ImpresionLicencias
             lblCabello.Text = this.objlicencia.cabello.Trim();
             lblContacto.Text = this.objlicencia.contacto.Trim();
             lblTelefonoContacto.Text = this.objlicencia.telContacto.Trim();
+            lblTextoDonador.Text = "Manifiesto que " + (this.objlicencia.donador ? "SI " : "NO ") + lblTextoDonador.Text;
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -104,8 +105,8 @@ namespace ImpresionLicencias
             label2.Parent = pbLogo;
             label2.BackColor = Color.Transparent;
             
-            lblDonador.Parent = lblTextoDonador;
-            lblDonador.BackColor = Color.Transparent;
+           // lblDonador.Parent = lblTextoDonador;
+           // lblDonador.BackColor = Color.Transparent;
            
             lblSeñas.BackColor = Color.Transparent;
             Tab1.SelectedTab = tabTrasera;

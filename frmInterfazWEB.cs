@@ -70,6 +70,9 @@ namespace ImpresionLicencias
         private void imprimirLicencia(int idLicencia)
         {
             this.estatusImpresion = EstatusImpresion.Error;
+            ConsumeWS objWS = new ConsumeWS();
+            verLicencias objLicencia = objWS.obtenerLicenciasByIdLicencia(idLicencia);
+            objWS.getDocumentosLicencia(objLicencia.idPersona);
             Form1 frm = new Form1(new ConsumeWS().obtenerLicenciasByIdLicencia(idLicencia));
             frm.ShowDialog();
             this.estatusImpresion = EstatusImpresion.OK;
