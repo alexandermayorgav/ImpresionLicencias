@@ -43,14 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ImpresionLicencias.exe" size="2593280">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ImpresionLicencias.exe" size="2722304">
       <assemblyIdentity name="ImpresionLicencias" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>f8dZI20+PyxKKOX3Fchr++lxX0h5LU6hTDlmdu66GMM=</dsig:DigestValue>
+        <dsig:DigestValue>fOMIzW5fwnf1fMimlcOGJlQ4FQP//rsnYAGKul+hS6c=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Jura.dll" size="24576">
+      <assemblyIdentity name="Jura" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>EFfBFnjhJy2afCZZf+Dytave6Jchbh9FWp9ObU895KU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

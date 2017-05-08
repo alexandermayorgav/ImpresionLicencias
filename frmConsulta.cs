@@ -58,7 +58,7 @@ namespace ImpresionLicencias
         {
             int idLicencia = Convert.ToInt32( gridDatos.CurrentRow.Cells["idLicencia"].Value);
             //verLicencias o = this.objVerLicencias.Where(i => i.idLicencias == idLicencia).ToList().First();
-            Form1 frm = new Form1(this.lstLicencias.Where(i=> i.idLicencias == idLicencia).ToList().First());
+            Form1 frm = new Form1(this.lstLicencias.Where(i=> i.idLicencias == idLicencia).ToList().First(),null);
             frm.ShowDialog();
             obtenerDatos();
 

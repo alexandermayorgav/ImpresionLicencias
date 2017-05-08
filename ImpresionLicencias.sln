@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Blend for Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImpresionLicencias", "ImpresionLicencias.csproj", "{7E16AB44-5F94-42D9-87CD-CA44B56721F5}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Jura", "..\..\Visual Studio 2012\Projects\Jura\Jura\Jura.vbproj", "{5554AEA6-2A47-4E0B-AF39-EB323E9B1570}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +15,10 @@ Global
 		{7E16AB44-5F94-42D9-87CD-CA44B56721F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E16AB44-5F94-42D9-87CD-CA44B56721F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E16AB44-5F94-42D9-87CD-CA44B56721F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5554AEA6-2A47-4E0B-AF39-EB323E9B1570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5554AEA6-2A47-4E0B-AF39-EB323E9B1570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5554AEA6-2A47-4E0B-AF39-EB323E9B1570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5554AEA6-2A47-4E0B-AF39-EB323E9B1570}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

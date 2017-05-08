@@ -80,7 +80,7 @@ namespace ImpresionLicencias
                 lstDocumentos.Add(
                     new DocumentoLicencia() 
                     { 
-                        imagen =  (DocumentoLicencia.TipoImagen) Enum.Parse(typeof(DocumentoLicencia.TipoImagen),arr[0]),
+                        tipoImagen =  (DocumentoLicencia.TipoImagen) Enum.Parse(typeof(DocumentoLicencia.TipoImagen),arr[0]),
                         archivo = arr[1].TrimStart().TrimEnd()
                     }
                     );
@@ -271,8 +271,8 @@ namespace ImpresionLicencias
 
     public class DocumentoLicencia
     {
-        public enum TipoImagen { Fotografia,Firma,Biometrico}
-        public TipoImagen imagen { get; set; }
+        public enum TipoImagen { Fotografia,Firma,Biometrico,MicroTexto}
+        public TipoImagen tipoImagen { get; set; }
         public string archivo { get; set; }
     }
    

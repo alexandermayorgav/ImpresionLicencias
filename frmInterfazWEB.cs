@@ -73,7 +73,7 @@ namespace ImpresionLicencias
             ConsumeWS objWS = new ConsumeWS();
             verLicencias objLicencia = objWS.obtenerLicenciasByIdLicencia(idLicencia);
             objWS.getDocumentosLicencia(objLicencia.idPersona);
-            Form1 frm = new Form1(new ConsumeWS().obtenerLicenciasByIdLicencia(idLicencia));
+            Form1 frm = new Form1(objLicencia, objWS.getDocumentosLicencia(objLicencia.idPersona));
             frm.ShowDialog();
             this.estatusImpresion = EstatusImpresion.OK;
         }
@@ -106,9 +106,9 @@ namespace ImpresionLicencias
                 
                 int bytes_recieved = re_socket.EndReceive(socket);
                 string data = UTF8Encoding.UTF8.GetString(buffer);
-
+                
                 //string[] imagen = data.Split(separador, StringSplitOptions.None);
-                imprimirLicencia(5);
+                imprimirLicencia(Convert.ToInt32(data));
                 //pbFrontal.Image =imagenFromURL(imagen[0]);
                 //pbTrasera.Image = imagenFromURL(imagen[1]);
                 flag = false;

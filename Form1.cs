@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,22 +17,82 @@ namespace ImpresionLicencias
 {
     public partial class Form1 : Form
     {
-
+        private readonly String ruta = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
         private Bitmap imgFrontal;
         private Bitmap imgTrasera;
         private const String nombreImgFrontal= "licenciaFrontal.jpg";
         private const String nombreImgTrasera = "licenciaTrasera.jpg";
         private Artifacts artifacts = new Artifacts();
         private verLicencias objlicencia;
+        private List<DocumentoLicencia> lstDocumentos;
 
-        public Form1(verLicencias licencia)
+        public String getRuta()
+        {
+            return ruta.Substring(6);
+        }
+        public Form1(verLicencias licencia, List<DocumentoLicencia> lstDocumentos)
         {
             InitializeComponent();
             this.objlicencia = licencia;
+            this.lstDocumentos = lstDocumentos;
+           // this.lstDocumentos.Add(new DocumentoLicencia()            {                tipoImagen = DocumentoLicencia.TipoImagen.FotografiaLocal,                archivo = getImageFromURL(lstDocumentos.Where(i => i.tipoImagen == DocumentoLicencia.TipoImagen.Fotografia).First())            });
+            this.lstDocumentos.ForEach(i => i.archivo = getImageFromURL(i));
+           // this.lstDocumentos.Where(j => j.tipoImagen == DocumentoLicencia.TipoImagen.Firma).Select(i => i.archivo = getImageFromURL(this.lstDocumentos.Where(j => j.tipoImagen == DocumentoLicencia.TipoImagen.Firma).First()));
+            //this.getMicroTextImage();
             setValoresFrontal();
             setValoresTrasera();
         }
 
+        /// <summary>
+        /// Genera la imagen con microtexto a partir de una imagen local y agrega la ruta de la imagen creada a la lista de documentos de la licencia
+        /// </summary>
+        private void getMicroTextImage()
+        {
+            //string imageLocalPath = getImageFromURL(lstDocumentos.Where(i=> i.imagen==DocumentoLicencia.TipoImagen.Fotografia).First().archivo);
+            
+            string microtextImage = getRuta() + "\\microText" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") +".bmp";
+            if (Jura.Jura.getImage(getImageFromURL(lstDocumentos.Where(i => i.tipoImagen == DocumentoLicencia.TipoImagen.Fotografia).First()), this.objlicencia.nombres.ToUpper(), this.objlicencia.primerAp.ToUpper().TrimStart() + " " + this.objlicencia.segundoAp.ToUpper().TrimStart(), this.objlicencia.numero.TrimStart(), microtextImage) == 0)
+            {
+                this.lstDocumentos.Add(new DocumentoLicencia()
+                {
+                    tipoImagen = DocumentoLicencia.TipoImagen.MicroTexto,
+                    archivo = microtextImage
+                });
+                this.pbFotoMicro.Image = Image.FromFile(this.lstDocumentos.Where(i=> i.tipoImagen == DocumentoLicencia.TipoImagen.MicroTexto).First().archivo);
+            }
+            else
+
+            {
+                MessageBox.Show("Error al generar el microtexto", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
+            
+        }
+        /// <summary>
+        /// obtiene una copia local de una imagen a partir de una URL
+        /// </summary>
+        /// <param name="ruta"></param>
+        /// <returns></returns>
+        public string getImageFromURL(DocumentoLicencia objDocumento)
+        {
+            string ruta = objDocumento.archivo;
+            ruta = ruta.Trim();
+            if (File.Exists(ruta))
+                return ruta;
+            
+
+            string url = ruta;//"http://wirecanary.com/reloj/" + ruta;
+            string[] arrNombre = ruta.Split('/');
+            string nombre = arrNombre[arrNombre.Length - 1];
+            string rutaLocal = this.getRuta() +"\\"+ objDocumento.tipoImagen.ToString() + nombre;
+            rutaLocal = rutaLocal.TrimEnd().TrimStart();
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFileAsync(new Uri(url), rutaLocal);
+            }
+            return rutaLocal.Replace('\\', '/');
+        }
+        
         private void setValoresFrontal()
         {
             lblNombre.Text = this.objlicencia.nombres.ToUpper().Trim();
@@ -45,6 +106,9 @@ namespace ImpresionLicencias
             lblFechaVencimiento.Text = String.Format("{0:dd-MMM-yyyy}", this.objlicencia.fechaExpira).ToUpper().Trim();
             lblTipoLicencia.Text = this.objlicencia.TipoLicencia.Trim();
             lblNumeroLicencia.Text = this.objlicencia.numero.Trim();
+            pbFotoPersona.Image = Image.FromFile(this.lstDocumentos.Where(i=>i.tipoImagen ==  DocumentoLicencia.TipoImagen.Fotografia).First().archivo);
+            pbFotoMicro.Image = Image.FromFile(this.lstDocumentos.Where(i => i.tipoImagen == DocumentoLicencia.TipoImagen.Fotografia).First().archivo);
+            pbFirmaPersona.Image = Image.FromFile(this.lstDocumentos.Where(i => i.tipoImagen == DocumentoLicencia.TipoImagen.Firma).First().archivo);
         }
 
         private void setValoresTrasera()
@@ -66,10 +130,14 @@ namespace ImpresionLicencias
         {
             if (MessageBox.Show("Desea imprimir la licencia?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.Yes)
                 return;
+            getMicroTextImage();
+            guardarImagen();
+
+
             if (ValidateChildren())
             {
                 CardModel card = new CardModel(artifacts);
-                card.PrinterName = "TOPPAN CP500";
+                card.PrinterName = "doPDF 8";// "TOPPAN CP500";
 
                 if (File.Exists(nombreImgFrontal))
                     card.Color1 = Image.FromFile(nombreImgFrontal);

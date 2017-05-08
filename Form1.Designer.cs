@@ -67,7 +67,6 @@
             this.lblOjos = new System.Windows.Forms.Label();
             this.lblEstatura = new System.Windows.Forms.Label();
             this.lblSangre = new System.Windows.Forms.Label();
-            this.lblDonador = new System.Windows.Forms.Label();
             this.lblTextoDonador = new System.Windows.Forms.Label();
             this.pbQR = new System.Windows.Forms.PictureBox();
             this.pbHuella = new System.Windows.Forms.PictureBox();
@@ -458,7 +457,6 @@
             this.panelTrasera.Controls.Add(this.lblOjos);
             this.panelTrasera.Controls.Add(this.lblEstatura);
             this.panelTrasera.Controls.Add(this.lblSangre);
-            this.panelTrasera.Controls.Add(this.lblDonador);
             this.panelTrasera.Controls.Add(this.lblTextoDonador);
             this.panelTrasera.Controls.Add(this.pbQR);
             this.panelTrasera.Controls.Add(this.pbHuella);
@@ -490,6 +488,7 @@
             this.lblContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContacto.ForeColor = System.Drawing.Color.Black;
             this.lblContacto.Location = new System.Drawing.Point(1459, 361);
+            this.lblContacto.MaximumSize = new System.Drawing.Size(380, 122);
             this.lblContacto.Name = "lblContacto";
             this.lblContacto.Size = new System.Drawing.Size(368, 122);
             this.lblContacto.TabIndex = 25;
@@ -584,18 +583,6 @@
             this.lblSangre.TabIndex = 17;
             this.lblSangre.Text = "O-";
             // 
-            // lblDonador
-            // 
-            this.lblDonador.AutoSize = true;
-            this.lblDonador.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDonador.ForeColor = System.Drawing.Color.Black;
-            this.lblDonador.Location = new System.Drawing.Point(867, 1178);
-            this.lblDonador.Name = "lblDonador";
-            this.lblDonador.Size = new System.Drawing.Size(82, 46);
-            this.lblDonador.TabIndex = 16;
-            this.lblDonador.Text = "NO";
-            this.lblDonador.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // lblTextoDonador
             // 
             this.lblTextoDonador.AutoSize = true;
@@ -603,10 +590,10 @@
             this.lblTextoDonador.ForeColor = System.Drawing.Color.Black;
             this.lblTextoDonador.Location = new System.Drawing.Point(575, 1177);
             this.lblTextoDonador.Name = "lblTextoDonador";
-            this.lblTextoDonador.Size = new System.Drawing.Size(1442, 92);
+            this.lblTextoDonador.Size = new System.Drawing.Size(1297, 92);
             this.lblTextoDonador.TabIndex = 15;
-            this.lblTextoDonador.Text = "Manifiesto que        soy un donador de órganos y tejidos (Ésto no implica un\r\nco" +
-    "nsentimiento expreso en los términos de la Ley General de Salud)";
+            this.lblTextoDonador.Text = "soy un donador de órganos y tejidos (Ésto no implica un\r\nconsentimiento expreso e" +
+    "n los términos de la Ley General de Salud)";
             this.lblTextoDonador.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // pbQR
@@ -880,7 +867,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pbHuella;
         private System.Windows.Forms.PictureBox pbQR;
-        private System.Windows.Forms.Label lblDonador;
         private System.Windows.Forms.Label lblTextoDonador;
         private System.Windows.Forms.Label lblSeñas;
         private System.Windows.Forms.Label label24;
