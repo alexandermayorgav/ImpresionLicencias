@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ImpresionLicencias.exe" size="2722304">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ImpresionLicencias.exe" size="2722816">
       <assemblyIdentity name="ImpresionLicencias" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fOMIzW5fwnf1fMimlcOGJlQ4FQP//rsnYAGKul+hS6c=</dsig:DigestValue>
+        <dsig:DigestValue>o/S4ubKPubRAX6eeyMHlI4vDEcQdmwBuv1q0XEZrNVk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -96,13 +96,13 @@
       <dsig:DigestValue>gO9UsIHaCobBZUzsG+dF+lvHWHstXEGXLRKUgEGlnzU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ImpresionLicencias.exe.config" size="187">
+  <file name="ImpresionLicencias.exe.config" size="341">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+      <dsig:DigestValue>XQ4eavPP2q/gIeZZpQw60vPF3OkBZ7cvZn7xUnDS0u0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="msvcr100d.dll" size="1467200">

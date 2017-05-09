@@ -35,10 +35,7 @@ namespace ImpresionLicencias
             InitializeComponent();
             this.objlicencia = licencia;
             this.lstDocumentos = lstDocumentos;
-           // this.lstDocumentos.Add(new DocumentoLicencia()            {                tipoImagen = DocumentoLicencia.TipoImagen.FotografiaLocal,                archivo = getImageFromURL(lstDocumentos.Where(i => i.tipoImagen == DocumentoLicencia.TipoImagen.Fotografia).First())            });
             this.lstDocumentos.ForEach(i => i.archivo = getImageFromURL(i));
-           // this.lstDocumentos.Where(j => j.tipoImagen == DocumentoLicencia.TipoImagen.Firma).Select(i => i.archivo = getImageFromURL(this.lstDocumentos.Where(j => j.tipoImagen == DocumentoLicencia.TipoImagen.Firma).First()));
-            //this.getMicroTextImage();
             setValoresFrontal();
             setValoresTrasera();
         }
@@ -124,6 +121,7 @@ namespace ImpresionLicencias
             lblContacto.Text = this.objlicencia.contacto.Trim();
             lblTelefonoContacto.Text = this.objlicencia.telContacto.Trim();
             lblTextoDonador.Text = "Manifiesto que " + (this.objlicencia.donador ? "SI " : "NO ") + lblTextoDonador.Text;
+            pbHuella.Image = Image.FromFile(this.lstDocumentos.Where(i => i.tipoImagen == DocumentoLicencia.TipoImagen.Biometrico).First().archivo);
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -137,13 +135,14 @@ namespace ImpresionLicencias
             if (ValidateChildren())
             {
                 CardModel card = new CardModel(artifacts);
-                card.PrinterName = "doPDF 8";// "TOPPAN CP500";
+                card.PrinterName = Sesion.impresora;
 
                 if (File.Exists(nombreImgFrontal))
                     card.Color1 = Image.FromFile(nombreImgFrontal);
                 if (File.Exists(nombreImgTrasera))
                     card.Color2 = Image.FromFile(nombreImgTrasera);
                 PrintService.Print(card);
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
             if (MessageBox.Show("Desea activar la licencia?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)==DialogResult.OK)
             {
@@ -172,10 +171,6 @@ namespace ImpresionLicencias
         {
             label2.Parent = pbLogo;
             label2.BackColor = Color.Transparent;
-            
-           // lblDonador.Parent = lblTextoDonador;
-           // lblDonador.BackColor = Color.Transparent;
-           
             lblSeñas.BackColor = Color.Transparent;
             Tab1.SelectedTab = tabTrasera;
             Tab1.SelectedTab = tabFrontal;

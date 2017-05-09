@@ -217,7 +217,7 @@
             this.lblFechaVencimiento.AutoSize = true;
             this.lblFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaVencimiento.ForeColor = System.Drawing.Color.Red;
-            this.lblFechaVencimiento.Location = new System.Drawing.Point(1025, 1137);
+            this.lblFechaVencimiento.Location = new System.Drawing.Point(1025, 1139);
             this.lblFechaVencimiento.Name = "lblFechaVencimiento";
             this.lblFechaVencimiento.Size = new System.Drawing.Size(445, 76);
             this.lblFechaVencimiento.TabIndex = 21;
@@ -228,7 +228,7 @@
             this.lblFechaExpedicion.AutoSize = true;
             this.lblFechaExpedicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaExpedicion.ForeColor = System.Drawing.Color.Red;
-            this.lblFechaExpedicion.Location = new System.Drawing.Point(1025, 1072);
+            this.lblFechaExpedicion.Location = new System.Drawing.Point(1025, 1074);
             this.lblFechaExpedicion.Name = "lblFechaExpedicion";
             this.lblFechaExpedicion.Size = new System.Drawing.Size(445, 76);
             this.lblFechaExpedicion.TabIndex = 20;
@@ -775,7 +775,7 @@
             this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimir.Location = new System.Drawing.Point(1172, 18);
+            this.btnImprimir.Location = new System.Drawing.Point(1517, 18);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(67, 22);
             this.btnImprimir.TabIndex = 1;

@@ -27,7 +27,7 @@ namespace ImpresionLicencias
     public class ConsumeWS
     {
         private Request objRequest;
-        private String url = "http://localhost/licencia/app.php";
+        private String url ;//= "http://localhost/licencia/app.php";
         private Usuario objUsuario;
         private Response objResponse;
         private List<DatosWS> lstDatos;
@@ -36,7 +36,13 @@ namespace ImpresionLicencias
         {
             this.objRequest = new Request();
             this.objResponse = new Response();
+            getConfiguracion();
             login();
+        }
+
+        private void getConfiguracion()
+        { 
+            this.url = System.Configuration.ConfigurationManager.AppSettings["webService"];
         }
 
         private void login()

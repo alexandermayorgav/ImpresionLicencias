@@ -23,7 +23,6 @@ namespace ImpresionLicencias
         private byte[] buffer;
         private readonly int puerto = 1500;
         private Artifacts artifacts = new Artifacts();
-        private readonly string impresora = "doPDF 8";//"TOPPAN CP500";
         private EstatusImpresora estatusImpresora;
         private EstatusImpresion estatusImpresion;
         private readonly string serverName = "http://localhost/ImpresionWeb/";
@@ -39,17 +38,17 @@ namespace ImpresionLicencias
         public frmInterfazWEB()
         {
             InitializeComponent();
-            //if (IsPrinterOnline("TOPPAN CP500"))
-            if (IsPrinterOnline(impresora))
+            getConfiguracion();
+            if (IsPrinterOnline(Sesion.impresora))
             {
                 pbImpresora.Image = ImpresionLicencias.Properties.Resources.printerON;
-                lblImpresora.Text = "Impresora conectada";
+                lblImpresora.Text = "Impresora "+ Sesion.impresora  + " conectada";
                 this.estatusImpresora = EstatusImpresora.Conectada;
             }
             else
             {
                 pbImpresora.Image = ImpresionLicencias.Properties.Resources.printerOFF;
-                lblImpresora.Text = "Impresora desconectada";
+                lblImpresora.Text = "Impresora " +Sesion.impresora + " desconectada";
                 this.estatusImpresora = EstatusImpresora.Desconectada;
             }
         }
@@ -64,18 +63,25 @@ namespace ImpresionLicencias
 
             AsyncCallback callback = new AsyncCallback(procces_incoming_socket);
             sc_listener.BeginAccept(callback, sc_listener);
+            
+        }
+
+        private void getConfiguracion()
+        { 
+            Sesion.impresora = System.Configuration.ConfigurationManager.AppSettings["impresora"];
+
         }
 
 
-        private void imprimirLicencia(int idLicencia)
+        private void imprimirLicenciaByIdLicencia(int idLicencia)
         {
             this.estatusImpresion = EstatusImpresion.Error;
             ConsumeWS objWS = new ConsumeWS();
             verLicencias objLicencia = objWS.obtenerLicenciasByIdLicencia(idLicencia);
             objWS.getDocumentosLicencia(objLicencia.idPersona);
             Form1 frm = new Form1(objLicencia, objWS.getDocumentosLicencia(objLicencia.idPersona));
-            frm.ShowDialog();
-            this.estatusImpresion = EstatusImpresion.OK;
+            if( frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                this.estatusImpresion = EstatusImpresion.OK;
         }
 
         void procces_incoming_socket(IAsyncResult socket_object)
@@ -103,20 +109,25 @@ namespace ImpresionLicencias
 
             while (flag)
             {
+                try
+                {
+                    int bytes_recieved = re_socket.EndReceive(socket);
+                    string data = UTF8Encoding.UTF8.GetString(buffer);
+
+                    imprimirLicenciaByIdLicencia(Convert.ToInt32(data));
+                    flag = false;
+                    respuesta = this.estatusImpresion.ToString();
+                }
+                catch (Exception ex)
+                {
+
+                    respuesta = ex.Message+ " " + ex.StackTrace;
+                    flag = false;
+                }
                 
-                int bytes_recieved = re_socket.EndReceive(socket);
-                string data = UTF8Encoding.UTF8.GetString(buffer);
-                
-                //string[] imagen = data.Split(separador, StringSplitOptions.None);
-                imprimirLicencia(Convert.ToInt32(data));
-                //pbFrontal.Image =imagenFromURL(imagen[0]);
-                //pbTrasera.Image = imagenFromURL(imagen[1]);
-                flag = false;
-                respuesta = this.estatusImpresion.ToString();
             }
            
             byte[] buffers = UTF8Encoding.UTF8.GetBytes(respuesta);
-            //buffers = UnicodeEncoding.Unicode.GetBytes(imgBase64);
             re_socket.Send(buffers);
             // if the socket is not closed php will load for maximum required time and then error
             re_socket.Close();
@@ -124,6 +135,7 @@ namespace ImpresionLicencias
             AsyncCallback callback = new AsyncCallback(procces_incoming_socket);
             sc_listener.BeginAccept(callback, sc_listener);
         }
+
         /// <summary>
         /// Genera un objeto Image a partir de una URL
         /// </summary>
