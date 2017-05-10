@@ -121,7 +121,7 @@ namespace ImpresionLicencias
                 catch (Exception ex)
                 {
 
-                    respuesta = ex.Message+ " " + ex.StackTrace;
+                    respuesta ="Error. "+  ex.Message+ " " + ex.StackTrace;
                     flag = false;
                 }
                 

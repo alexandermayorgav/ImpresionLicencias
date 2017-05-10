@@ -55,15 +55,15 @@ namespace ImpresionLicencias
                     tipoImagen = DocumentoLicencia.TipoImagen.MicroTexto,
                     archivo = microtextImage
                 });
-                this.pbFotoMicro.Image = Image.FromFile(this.lstDocumentos.Where(i=> i.tipoImagen == DocumentoLicencia.TipoImagen.MicroTexto).First().archivo);
+                this.pbFotoMicro.Image = Image.FromFile(this.lstDocumentos.Where(i => i.tipoImagen == DocumentoLicencia.TipoImagen.MicroTexto).First().archivo);
             }
             else
 
             {
-                MessageBox.Show("Error al generar el microtexto", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error al generar el microtexto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+
         }
         /// <summary>
         /// obtiene una copia local de una imagen a partir de una URL
