@@ -22,12 +22,13 @@ using System.Net.Http;
 using System.Web;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Sockets;
 namespace ImpresionLicencias
 {
     public class ConsumeWS
     {
         private Request objRequest;
-        private String url ;//= "http://localhost/licencia/app.php";
+        private String url ;//= "http://motd.mx/Licencias2/app.php";
         private Usuario objUsuario;
         private Response objResponse;
         private List<DatosWS> lstDatos;
@@ -66,6 +67,25 @@ namespace ImpresionLicencias
             String token = objResponse.data.Split(':')[1].Substring(1);
             token = token.Substring(0, token.Length - 2);
             this.objUsuario.token = token;
+        }
+
+
+       
+        /// <summary>
+        /// Retorna la ip del equipo en la red local
+        /// </summary>
+        /// <returns></returns>
+        private string getIPLocal()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("Ip Local no encontrada!");
         }
 
         public void actualizarLicencia(int idLicencia)
@@ -323,7 +343,32 @@ namespace ImpresionLicencias
         public string telContacto { get; set; }
 
 
-
+        public string getDatosLicencia()
+        {
+            string datos = string.Empty;
+            datos +=this.idLicencias.ToString();
+            datos+=this.numero;
+            datos += this.nombres;
+            datos += this.primerAp;
+            datos += this.segundoAp;
+            datos += this.TipoLicencia;
+            datos += this.fechaExpedicion.ToShortDateString();
+            datos +=this.fechaExpira.ToShortDateString();
+                datos +=this.RFC;
+                datos +=this.calle;
+                datos +=this.numero;
+                datos +=this.colonia;
+                datos +=this.municipio;
+                datos +=this.CP;
+                datos +=this.estado;
+                datos +=this.señas;
+                datos +=this.sangre;
+                datos +=this.estatura;
+                datos += this.requerimiento;
+                datos += this.contacto;
+                datos += this.telContacto;
+            return datos ;
+        }
 
     }
 
