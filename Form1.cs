@@ -47,21 +47,21 @@ namespace ImpresionLicencias
         {
             //string imageLocalPath = getImageFromURL(lstDocumentos.Where(i=> i.imagen==DocumentoLicencia.TipoImagen.Fotografia).First().archivo);
             
-            //string microtextImage = getRuta() + "\\microText" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") +".bmp";
-            //if (Jura.Jura.getImage(getImageFromURL(lstDocumentos.Where(i => i.tipoImagen == DocumentoLicencia.TipoImagen.Fotografia).First()), this.objlicencia.nombres.ToUpper(), this.objlicencia.primerAp.ToUpper().TrimStart() + " " + this.objlicencia.segundoAp.ToUpper().TrimStart(), this.objlicencia.numero.TrimStart(), microtextImage) == 0)
-            //{
-            //    this.lstDocumentos.Add(new DocumentoLicencia()
-            //    {
-            //        tipoImagen = DocumentoLicencia.TipoImagen.MicroTexto,
-            //        archivo = microtextImage
-            //    });
-            //    this.pbFotoMicro.Image = Image.FromFile(this.lstDocumentos.Where(i=> i.tipoImagen == DocumentoLicencia.TipoImagen.MicroTexto).First().archivo);
-            //}
-            //else
+            string microtextImage = getRuta() + "\\microText" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") +".bmp";
+            if (Jura.Jura.getImage(getImageFromURL(lstDocumentos.Where(i => i.tipoImagen == DocumentoLicencia.TipoImagen.Fotografia).First()), this.objlicencia.nombres.ToUpper(), this.objlicencia.primerAp.ToUpper().TrimStart() + " " + this.objlicencia.segundoAp.ToUpper().TrimStart(), this.objlicencia.numero.TrimStart(), microtextImage) == 0)
+            {
+                this.lstDocumentos.Add(new DocumentoLicencia()
+                {
+                    tipoImagen = DocumentoLicencia.TipoImagen.MicroTexto,
+                    archivo = microtextImage
+                });
+                this.pbFotoMicro.Image = Image.FromFile(this.lstDocumentos.Where(i=> i.tipoImagen == DocumentoLicencia.TipoImagen.MicroTexto).First().archivo);
+            }
+            else
 
-            //{
-            //    MessageBox.Show("Error al generar el microtexto", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
-            //}
+            {
+                MessageBox.Show("Error al generar el microtexto", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
 
             
         }
@@ -141,9 +141,6 @@ namespace ImpresionLicencias
                     card.Color1 = Image.FromFile(nombreImgFrontal);
                 if (File.Exists(nombreImgTrasera))
                     card.Color2 = Image.FromFile(nombreImgTrasera);
-
-                card.DatosRFID = this.objlicencia.getDatosLicencia();
-                card.Fotografia = getBase64StringByImagen(pbFotoPersona.Image);
                 PrintService.Print(card);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
@@ -204,19 +201,6 @@ namespace ImpresionLicencias
         {
             this.pbImgZoom.Image = null;
 
-        }
-
-        
-
-        public String getBase64StringByImagen(Image imageIn)
-        {
-            return Convert.ToBase64String(imageToByteArray(imageIn));
-        }
-        public byte[] imageToByteArray(Image imageIn)
-        {
-            MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-            return ms.ToArray();
         }
     }
 }

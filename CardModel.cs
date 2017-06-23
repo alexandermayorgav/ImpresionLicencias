@@ -16,8 +16,6 @@ namespace Print {
         private Image ultraviolet2;
         private string printerName;
         private Artifacts artifacts;
-        private string datosRFID;
-        private string fotografia;
 
 
         //---------------------------- CONSTRUCTION ---------------------------
@@ -68,18 +66,6 @@ namespace Print {
         // storage mechanism for temporary files
         public Artifacts Artifacts {
             get { return artifacts; }
-        }
-
-        public string DatosRFID {
-            get { return datosRFID; }
-            set { datosRFID = value; }
-        }
-
-        public string Fotografia
-        {
-            get { return fotografia; }
-            set { fotografia = value; }
-        
         }
 
     }

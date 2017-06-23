@@ -73,10 +73,5 @@ namespace ImpresionLicencias
             else
                 mostrarDatos(lstLicencias);
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            obtenerDatos();
-        }
     }
 }

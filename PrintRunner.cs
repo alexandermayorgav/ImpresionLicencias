@@ -56,26 +56,12 @@ namespace Print {
 
             document.PrinterSettings.SetHdevmode(devmode);
         }
-
-        // set magnetic encoding
-        private void MagneticEncode(PrintPageEventArgs e)
-        {
-            using (GraphicsHandle g = GraphicsHandle.Open(e.Graphics))
-            {
-                if (!string.IsNullOrEmpty(model.DatosRFID))
-                    CP500.WriteTrack(g.Handle, new CP500.EncodeVar(0, Encoding.ASCII.GetBytes(model.DatosRFID)));
-                if (!string.IsNullOrEmpty(model.Fotografia))
-                    CP500.WriteTrack(g.Handle, new CP500.EncodeVar(2, Encoding.ASCII.GetBytes(model.Fotografia)));
-                
-            }
-        }
         
         // print a page (eg side)
         void OnPrintPage(object sender, PrintPageEventArgs e) {
             if (sides == Surface.Front) {
                 PrintSide1(e.Graphics);
                 e.HasMorePages = IsPrintingBack;
-                MagneticEncode(e);
                 sides = Surface.Back;
             } else {
                 PrintSide2(e.Graphics);
